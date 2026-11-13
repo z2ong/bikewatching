@@ -26,9 +26,11 @@ function getCoords(station) {
 }
 
 function updatePositions() {
-  circles
+  if(circles) {
+    circles
     .attr('cx', (d) => getCoords(d).cx) // Set the x-position using projected coordinates
     .attr('cy', (d) => getCoords(d).cy); // Set the y-position using projected coordinates
+  }
 }
 
 map.on('load', async () => {
