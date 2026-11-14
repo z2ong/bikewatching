@@ -1,3 +1,10 @@
+html, body {
+  margin: 0;
+  padding: 5;
+  height: 100%;
+  width: 100%;
+}
+
 body {
   font: 100%/1.5 system-ui, sans-serif;
   display: flex;
@@ -7,17 +14,6 @@ body {
   box-sizing: border-box;
   margin: auto;
   padding: 1em;
-}
-
-html,
-body {
-  margin: 0;
-  padding: 5;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
 }
 
 #map {
@@ -40,4 +36,18 @@ body {
   fill-opacity: 60%;
   stroke: white;
   pointer-events: auto;
+}
+
+header {
+  display: flex;
+  gap: 1em;
+  align-items: baseline;
+}
+
+header label {
+  margin-left: auto;
+}
+
+header time, header em {
+  display: block;
 }

@@ -10,8 +10,14 @@
     />
     <script src="map.js" type="module"></script>
   </head>
+  <header>
+      <h1>🚴🏼‍♀️ Bikewatching</h1>
+      <label>Filter by time:
+        <input type = 'range' id = 'time-slider' min = '-1' max = '1440' value = '-1'>
+        <time id = 'any-time'><em>(any time)</em></time>      
+      </label>
+  </header>
   <body>
-    <h1>🚴🏼‍♀️ Bikewatching</h1>
     <div id="map">
       <svg></svg>
     </div>
