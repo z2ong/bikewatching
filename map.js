@@ -67,6 +67,8 @@ function minutesSinceMidnight(date) {
   return date.getHours() * 60 + date.getMinutes();
 }
 
+let stationFlow = d3.scaleQuantize().domain([0, 1]).range([0, 0.5, 1]);
+
 function filterTripsbyTime(trips, timeFilter) {
   return timeFilter === -1
     ? trips
@@ -142,7 +144,10 @@ map.on('load', async () => {
           .text(
             `${d.totalTraffic} trips (${d.departures} departures, ${d.arrivals} arrivals)`
           );
-      });
+      })
+      .style('--departure-ratio', (d) =>
+        stationFlow(d.departures / d.totalTraffic),
+      );
 
     function updateScatterPlot(timeFilter) {
       const filteredTrips = filterTripsbyTime(trips, timeFilter);
@@ -153,7 +158,10 @@ map.on('load', async () => {
       circles
         .data(filteredStations, (d) => d.short_name)
         .join('circle')
-        .attr('r', (d) => radiusScale(d.totalTraffic));
+        .attr('r', (d) => radiusScale(d.totalTraffic))
+        .style('--departure-ratio', (d) =>
+          stationFlow(d.departures / d.totalTraffic),
+        );
     }
 
     function updateTimeDisplay() {
